@@ -1,0 +1,128 @@
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.menu {
+	width:960px; clear: both; height: 32px;
+}
+.menu A:hover {
+	 color:#fff; background-color:#039;
+}
+.menu A {
+	display:block; height:33px; line-height:33px; color:#fff; text-decoration:none; font-size:10pt; font-weight:bold; padding:0 0 0 0px; cursor:pointer; text-decoration: none; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.menu UL 
+{
+    display: inline;
+	padding:0; 
+	margin:0; 
+	list-style:none; 
+	height:33px;  
+	position:relative; 
+	z-index:500; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; text-align: center;
+}
+    .menu UL LI {
+        display: block;
+        float: left;
+        height: 33px;
+        position: relative;
+        cursor: pointer;
+        width: 190px;
+        border-left: solid 1px #FFF;
+        border-right: solid 1px #FFF;
+        border-top-style: none;
+        border-right-style: solid;
+        border-bottom-style: none;
+        border-left-style: solid;
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-left: auto;
+        background-image: url('../images/bar-01.jpg');
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+    }
+
+ul li ul {
+  padding: 0;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 150px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -transition: opacity 0.2s;
+}
+
+ul li ul li { 
+  background: #555; 
+  display: block; 
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+}
+.menu ul li ul li:hover { background: #666; }
+.menu ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.menu UL LI a span 
+{
+	float:left; display:block; padding:0 0px 0 0px; height:33px; text-align: center; width: 190px; right top;
+}
+    .menu UL LI a span.down {
+        float: left;
+        display: block;
+        padding: 0 0px 0 0px;
+        height: 33px;
+        text-align: center;
+        background-image: url('../images/bar-01-down.jpg');
+    }
+.menu UL LI a:hover span.down {
+    background-image: url('../images/bar-01-down-hover.jpg');
+    display: block;
+}
+.menu UL LI a:active span.down {
+    background-image: url('../images/bar-01-down-hover.jpg');
+}
+.menu UL LI UL LI {
+	background: #039 url('../images/bar-01.jpg'); margin-left:auto;  display:block; height: auto; position:relative; float:left; width: 190px; font-weight:normal; 
+}
+.menu UL LI UL LI A {
+	display:block; padding-top:10px; padding-bottom:10px;  font-size:10pt; height: auto; width: 190px; line-height: normal; text-indent:5px; color:#fff; text-decoration:none; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-weight:normal; 
+}
+.menu UL LI UL {
+	top:32px; padding:0;  float: left; margin-top: 0px; margin-right: auto; margin-bottom: 0; margin-left: auto; 
+ height:auto; z-index:300; width: 190px; position: absolute; left: -1px; text-align: center; vertical-align: middle; display:none;
+}
+
+
+
+
+
+.active UL {
+	DISPLAY: block !important
+}
+.active A {
+	Z-INDEX: 1;
+}
+.active A:hover {
+	background:#039;
+}
+.active UL A:hover {
+	background:#039;
+}
+.active UL A {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; box-shadow: 0 0 0 #CCCCCC; 
+}

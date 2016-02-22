@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NCSSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ARTICLE">
+    <Key>
+      <PropertyRef Name="ArticleId" />
+    </Key>
+    <Property Name="ArticleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArticleTitle" Type="nvarchar" MaxLength="200" />
+    <Property Name="ArticleDate" Type="datetime" />
+    <Property Name="ArticleDetail" Type="ntext" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EVENT">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventTitle" Type="nvarchar" MaxLength="200" />
+    <Property Name="EventStartDate" Type="datetime" />
+    <Property Name="EventEndDate" Type="datetime" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="Venue" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LEAVE">
+    <Key>
+      <PropertyRef Name="LeaveId" />
+    </Key>
+    <Property Name="LeaveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LeaveTypeId" Type="int" Nullable="false" />
+    <Property Name="LeaveStatusId" Type="int" Nullable="false" />
+    <Property Name="DateFrom" Type="datetime" />
+    <Property Name="DateTo" Type="datetime" />
+    <Property Name="DaysOff" Type="int" />
+    <Property Name="Reason" Type="ntext" />
+    <Property Name="RejectReason" Type="ntext" />
+  </EntityType>
+  <EntityType Name="LEAVEBALANCE">
+    <Key>
+      <PropertyRef Name="LeaveBalanceId" />
+    </Key>
+    <Property Name="LeaveBalanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="LeaveTypeId" Type="int" Nullable="false" />
+    <Property Name="RemainingDays" Type="int" />
+  </EntityType>
+  <EntityType Name="LEAVEMODIFY">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="LeaveId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="LeaveId" Type="int" Nullable="false" />
+    <Property Name="Action" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="LEAVESTATUS">
+    <Key>
+      <PropertyRef Name="LeaveStatusId" />
+    </Key>
+    <Property Name="LeaveStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LeaveStatusName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LEAVETYPE">
+    <Key>
+      <PropertyRef Name="LeaveTypeId" />
+    </Key>
+    <Property Name="LeaveTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LeaveName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NEWS">
+    <Key>
+      <PropertyRef Name="NewsId" />
+    </Key>
+    <Property Name="NewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewsDate" Type="datetime" />
+    <Property Name="NewsTitle" Type="nvarchar" MaxLength="200" />
+    <Property Name="NewsDetail" Type="ntext" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PAYSLIP">
+    <Key>
+      <PropertyRef Name="PayslipId" />
+    </Key>
+    <Property Name="PayslipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="PayslipTime" Type="datetime" />
+    <Property Name="ContractSalary" Type="float" />
+    <Property Name="TechIncentive" Type="float" />
+    <Property Name="ClientBonus" Type="float" />
+    <Property Name="CompanyBonus" Type="float" />
+    <Property Name="OvertimePayment" Type="float" />
+    <Property Name="SalaryDeduction" Type="float" />
+    <Property Name="HealthInsurance" Type="float" />
+    <Property Name="SocialInsuance" Type="float" />
+    <Property Name="TaxPayable" Type="float" />
+    <Property Name="TakeHomeIncome" Type="float" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="ManagerId" Type="int" />
+    <Property Name="Username" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="PersonalTaxCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Address" Type="ntext" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" />
+  </EntityType>
+  <Association Name="FK__ARTICLE__UserId__286302EC">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="ARTICLE" Type="Self.ARTICLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ARTICLE">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EVENT__UserId__276EDEB3">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="EVENT" Type="Self.EVENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="EVENT">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LEAVE__LeaveStat__2C3393D0">
+    <End Role="LEAVESTATUS" Type="Self.LEAVESTATUS" Multiplicity="1" />
+    <End Role="LEAVE" Type="Self.LEAVE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LEAVESTATUS">
+        <PropertyRef Name="LeaveStatusId" />
+      </Principal>
+      <Dependent Role="LEAVE">
+        <PropertyRef Name="LeaveStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LEAVE__LeaveType__2A4B4B5E">
+    <End Role="LEAVETYPE" Type="Self.LEAVETYPE" Multiplicity="1" />
+    <End Role="LEAVE" Type="Self.LEAVE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LEAVETYPE">
+        <PropertyRef Name="LeaveTypeId" />
+      </Principal>
+      <Dependent Role="LEAVE">
+        <PropertyRef Name="LeaveTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LEAVEBALA__Leave__2B3F6F97">
+    <End Role="LEAVETYPE" Type="Self.LEAVETYPE" Multiplicity="1" />
+    <End Role="LEAVEBALANCE" Type="Self.LEAVEBALANCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LEAVETYPE">
+        <PropertyRef Name="LeaveTypeId" />
+      </Principal>
+      <Dependent Role="LEAVEBALANCE">
+        <PropertyRef Name="LeaveTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LEAVEBALA__UserI__24927208">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="LEAVEBALANCE" Type="Self.LEAVEBALANCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LEAVEBALANCE">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LEAVEMODI__Leave__2D27B809">
+    <End Role="LEAVE" Type="Self.LEAVE" Multiplicity="1" />
+    <End Role="LEAVEMODIFY" Type="Self.LEAVEMODIFY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LEAVE">
+        <PropertyRef Name="LeaveId" />
+      </Principal>
+      <Dependent Role="LEAVEMODIFY">
+        <PropertyRef Name="LeaveId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LEAVEMODI__UserI__239E4DCF">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="LEAVEMODIFY" Type="Self.LEAVEMODIFY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LEAVEMODIFY">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NEWS__UserId__267ABA7A">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="NEWS" Type="Self.NEWS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="NEWS">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PAYSLIP__UserId__25869641">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="PAYSLIP" Type="Self.PAYSLIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="PAYSLIP">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER__RoleID__29572725">
+    <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+    <End Role="USER" Type="Self.USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NCSSModelStoreContainer">
+    <EntitySet Name="ARTICLE" EntityType="Self.ARTICLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EVENT" EntityType="Self.EVENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LEAVE" EntityType="Self.LEAVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LEAVEBALANCE" EntityType="Self.LEAVEBALANCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LEAVEMODIFY" EntityType="Self.LEAVEMODIFY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LEAVESTATUS" EntityType="Self.LEAVESTATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LEAVETYPE" EntityType="Self.LEAVETYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NEWS" EntityType="Self.NEWS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAYSLIP" EntityType="Self.PAYSLIP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ARTICLE__UserId__286302EC" Association="Self.FK__ARTICLE__UserId__286302EC">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="ARTICLE" EntitySet="ARTICLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EVENT__UserId__276EDEB3" Association="Self.FK__EVENT__UserId__276EDEB3">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="EVENT" EntitySet="EVENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LEAVE__LeaveStat__2C3393D0" Association="Self.FK__LEAVE__LeaveStat__2C3393D0">
+      <End Role="LEAVESTATUS" EntitySet="LEAVESTATUS" />
+      <End Role="LEAVE" EntitySet="LEAVE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LEAVE__LeaveType__2A4B4B5E" Association="Self.FK__LEAVE__LeaveType__2A4B4B5E">
+      <End Role="LEAVETYPE" EntitySet="LEAVETYPE" />
+      <End Role="LEAVE" EntitySet="LEAVE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LEAVEBALA__Leave__2B3F6F97" Association="Self.FK__LEAVEBALA__Leave__2B3F6F97">
+      <End Role="LEAVETYPE" EntitySet="LEAVETYPE" />
+      <End Role="LEAVEBALANCE" EntitySet="LEAVEBALANCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LEAVEBALA__UserI__24927208" Association="Self.FK__LEAVEBALA__UserI__24927208">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="LEAVEBALANCE" EntitySet="LEAVEBALANCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LEAVEMODI__Leave__2D27B809" Association="Self.FK__LEAVEMODI__Leave__2D27B809">
+      <End Role="LEAVE" EntitySet="LEAVE" />
+      <End Role="LEAVEMODIFY" EntitySet="LEAVEMODIFY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LEAVEMODI__UserI__239E4DCF" Association="Self.FK__LEAVEMODI__UserI__239E4DCF">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="LEAVEMODIFY" EntitySet="LEAVEMODIFY" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NEWS__UserId__267ABA7A" Association="Self.FK__NEWS__UserId__267ABA7A">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="NEWS" EntitySet="NEWS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PAYSLIP__UserId__25869641" Association="Self.FK__PAYSLIP__UserId__25869641">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="PAYSLIP" EntitySet="PAYSLIP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER__RoleID__29572725" Association="Self.FK__USER__RoleID__29572725">
+      <End Role="ROLE" EntitySet="ROLE" />
+      <End Role="USER" EntitySet="USER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

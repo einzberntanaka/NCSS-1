@@ -1,0 +1,94 @@
+﻿@model NCSS.Model.ManageLeaveModel
+@{
+    ViewBag.Title = "NCSS - Leave Application";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+        <h1 class="page-header">
+            Manage Leave Application
+        </h1>
+
+        <ol class="breadcrumb">
+            <li>
+                <i class=""></i>  <a href="~/Home/Portal">Home</a>
+            </li>
+            <li class="active">
+                <i class=""></i> <a href="~/Leave">Manage Leave Application</a>
+            </li>
+        </ol>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Information
+            </div>
+            <div class="panel-body">
+                <form class="form-inline" role="form">
+                    <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+                        <div class="form-group">
+
+                            <label>Full Name:</label> @Model.FullName
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+                        <div class="form-group">
+                            <label>Manager:</label> @Model.ManagerName
+
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Balance Hours
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Annual Leave</th>
+                                <th>Medical Leave</th>
+                                <th>Hospitalisation Leave</th>
+                                <th>No Pay Leave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HR</td>
+                                <td>96</td>
+                                <td>30</td>
+                                <td>5</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Adjusted</td>
+                                <td>@Model.AnnualLeave</td>
+                                <td>@Model.MedicalLeave</td>
+                                <td>@Model.HospitalLeave</td>
+                                <td>@Model.NoPayLeave</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+<script>
+    $(document).ready(function () {
+        $('#leaveMain').removeClass('collapsed');
+        $("#leaveMain").attr("aria-expanded", "true");
+        $('#leaveApp').addClass('in');
+        $("#leaveApp").attr("aria-expanded", "true");
+        $("#leaveApp").css("height", "71px");
+        $("#menu-top").find("li").removeClass("active");
+        $("#Leave-menu").addClass("active");
+    });
+</script>

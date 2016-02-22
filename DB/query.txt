@@ -1,0 +1,178 @@
+/*
+Created		2/19/2016
+Modified		2/21/2016
+Project		
+Model			
+Company		
+Author		
+Version		
+Database		MS SQL 2005 
+*/
+
+
+Create table [USER]
+(
+	[UserId] Integer Identity(1,1) NOT NULL,
+	[RoleID] Integer NOT NULL,
+	[ManagerId] Integer NULL,
+	[Username] Nvarchar(16) NOT NULL,
+	[Password] Nvarchar(32) NOT NULL,
+	[FullName] Nvarchar(50) NULL,
+	[EmployeeID] Integer NULL,
+	[PersonalTaxCode] Nvarchar(10) NULL,
+	[Address] Ntext NULL,
+	[PhoneNumber] Nvarchar(12) NULL,
+Primary Key ([UserId])
+) 
+go
+
+Create table [ROLE]
+(
+	[RoleID] Integer Identity(1,1) NOT NULL,
+	[RoleName] Nvarchar(16) NOT NULL,
+Primary Key ([RoleID])
+) 
+go
+
+Create table [LEAVETYPE]
+(
+	[LeaveTypeId] Integer Identity(1,1) NOT NULL,
+	[LeaveName] Nvarchar(50) NULL,
+Primary Key ([LeaveTypeId])
+) 
+go
+
+Create table [LEAVESTATUS]
+(
+	[LeaveStatusId] Integer Identity(1,1) NOT NULL,
+	[LeaveStatusName] Nvarchar(50) NULL,
+Primary Key ([LeaveStatusId])
+) 
+go
+
+Create table [LEAVE]
+(
+	[LeaveId] Integer Identity(1,1) NOT NULL,
+	[LeaveTypeId] Integer NOT NULL,
+	[LeaveStatusId] Integer NOT NULL,
+	[DateFrom] Datetime NULL,
+	[DateTo] Datetime NULL,
+	[DaysOff] Integer NULL,
+	[Reason] Ntext NULL,
+	[RejectReason] Ntext NULL,
+Primary Key ([LeaveId])
+) 
+go
+
+Create table [LEAVEMODIFY]
+(
+	[UserId] Integer NOT NULL,
+	[LeaveId] Integer NOT NULL,
+	[Action] Char(1) NULL,
+Primary Key ([UserId],[LeaveId])
+) 
+go
+
+Create table [PAYSLIP]
+(
+	[PayslipId] Integer Identity(1,1) NOT NULL,
+	[UserId] Integer NOT NULL,
+	[PayslipTime] Datetime NULL,
+	[ContractSalary] Float NULL,
+	[TechIncentive] Float NULL,
+	[ClientBonus] Float NULL,
+	[CompanyBonus] Float NULL,
+	[OvertimePayment] Float NULL,
+	[SalaryDeduction] Float NULL,
+	[HealthInsurance] Float NULL,
+	[SocialInsuance] Float NULL,
+	[TaxPayable] Float NULL,
+	[TakeHomeIncome] Float NULL,
+Primary Key ([PayslipId])
+) 
+go
+
+Create table [LEAVEBALANCE]
+(
+	[LeaveBalanceId] Integer Identity(1,1) NOT NULL,
+	[UserId] Integer NOT NULL,
+	[LeaveTypeId] Integer NOT NULL,
+	[RemainingDays] Integer NULL,
+Primary Key ([LeaveBalanceId])
+) 
+go
+
+Create table [EVENT]
+(
+	[EventId] Integer Identity(1,1) NOT NULL,
+	[EventTitle] Nvarchar(200) NULL,
+	[EventStartDate] Datetime NULL,
+	[EventEndDate] Datetime NULL,
+	[Description] Ntext NULL,
+	[Venue] Nvarchar(200) NULL,
+	[UserId] Integer NOT NULL,
+Primary Key ([EventId])
+) 
+go
+
+Create table [NEWS]
+(
+	[NewsId] Integer Identity(1,1) NOT NULL,
+	[NewsDate] Datetime NULL,
+	[NewsTitle] Nvarchar(200) NULL,
+	[NewsDetail] Ntext NULL,
+	[UserId] Integer NOT NULL,
+Primary Key ([NewsId])
+) 
+go
+
+Create table [ARTICLE]
+(
+	[ArticleId] Integer Identity(1,1) NOT NULL,
+	[ArticleTitle] Nvarchar(200) NULL,
+	[ArticleDate] Datetime NULL,
+	[ArticleDetail] Ntext NULL,
+	[UserId] Integer NOT NULL,
+Primary Key ([ArticleId])
+) 
+go
+
+
+Alter table [LEAVEMODIFY] add  foreign key([UserId]) references [USER] ([UserId])  on update no action on delete no action 
+go
+Alter table [LEAVEBALANCE] add  foreign key([UserId]) references [USER] ([UserId])  on update no action on delete no action 
+go
+Alter table [PAYSLIP] add  foreign key([UserId]) references [USER] ([UserId])  on update no action on delete no action 
+go
+Alter table [NEWS] add  foreign key([UserId]) references [USER] ([UserId])  on update no action on delete no action 
+go
+Alter table [EVENT] add  foreign key([UserId]) references [USER] ([UserId])  on update no action on delete no action 
+go
+Alter table [ARTICLE] add  foreign key([UserId]) references [USER] ([UserId])  on update no action on delete no action 
+go
+Alter table [USER] add  foreign key([RoleID]) references [ROLE] ([RoleID])  on update no action on delete no action 
+go
+Alter table [LEAVE] add  foreign key([LeaveTypeId]) references [LEAVETYPE] ([LeaveTypeId])  on update no action on delete no action 
+go
+Alter table [LEAVEBALANCE] add  foreign key([LeaveTypeId]) references [LEAVETYPE] ([LeaveTypeId])  on update no action on delete no action 
+go
+Alter table [LEAVE] add  foreign key([LeaveStatusId]) references [LEAVESTATUS] ([LeaveStatusId])  on update no action on delete no action 
+go
+Alter table [LEAVEMODIFY] add  foreign key([LeaveId]) references [LEAVE] ([LeaveId])  on update no action on delete no action 
+go
+
+
+Set quoted_identifier on
+go
+
+
+Set quoted_identifier off
+go
+
+
+/* Roles permissions */
+
+
+/* Users permissions */
+
+

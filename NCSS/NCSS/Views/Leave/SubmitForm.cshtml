@@ -1,0 +1,140 @@
+﻿@model NCSS.Model.SubmitLeaveModel
+@{
+    Layout = null;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Submit Leave Form
+    </div>
+    <div class="panel-body">
+
+@using (Ajax.BeginForm("SubmitLeave", "Leave", new AjaxOptions
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "submit-leave",
+}, new { @class = "form-horizontal col-sm-12 col-md-8 col-md-offset-2 col-xs-12" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="email">Leave Type:</label>
+        <div class="col-sm-9">
+            @Html.DropDownList("LeaveType", (SelectList)ViewBag.leaveType, new { @class = "form-control input-large" })
+
+        </div>
+    </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="pwd">Remaining Days:</label>
+                <div class="col-sm-7" id="remain-days">
+                    @Model.RemainingDays
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">From Date:</label>
+                <div class="col-sm-9">
+                    <div class='input-group'>
+                        @Html.TextBoxFor(model => model.DateFrom, null, new { @class = "form-control" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+                    </div>
+                    @Html.ValidationMessageFor(model => model.DateFrom)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">To Date:</label>
+                <div class="col-sm-9">
+                    <div class='input-group'>
+                        @Html.TextBoxFor(model => model.DateTo, null, new { @class = "form-control" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+                    </div>
+                    @Html.ValidationMessageFor(model => model.DateTo)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">Number of Days Off:</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.DaysOffNumber, null, new { @class = "form-control" })
+                    <span class="field-validation-error" id="number-days" data-valmsg-for="Reason" data-valmsg-replace="true">Number of Days Off cannot be larger than Remaining Days.</span>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">Reason:</label>
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(model => model.Reason, new { @class = "form-control custom-control", @style = "resize: none" })
+                    @Html.ValidationMessageFor(model => model.Reason)
+                </div>
+            </div>
+            <div class="pull-right">
+                <input type="submit" class="btn btn-success" value="Submit" />
+                <input type="submit" class="btn btn-danger" value="Cancel" />
+            </div>
+}
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        CheckValidDays();
+        $('#DateFrom').datepicker();
+        $('#DateTo').datepicker();
+        $("#number-days").hide();
+        $("#LeaveType").change(function () {
+            var leaveid = $("#LeaveType").val();
+            $.ajax({
+                url: '../Leave/GetRemainingDays',
+                type: 'POST',
+                dataType: 'json',
+                data: { LeaveId:leaveid },
+                success: function (data) {
+                    $('#remain-days').html(data);
+                    CheckValidDays();
+                },
+            });
+        });
+        function CheckValidDays() {
+            var daysoff = $("#DaysOffNumber").val();
+            var daysremain = $("#remain-days").text().replace(/ /g, '');
+            if (parseFloat(daysoff, 1) > parseFloat(daysremain, 10)) {
+                $("#number-days").show();
+            }
+            else
+                $("#number-days").hide();
+        }
+        $("#DaysOffNumber").change(function () {
+            CheckValidDays();
+        })
+        $("#Reason").change(function () {
+            var reason = $("#Reason").val();
+            if(reason== null || reason == "")
+            {
+
+            }
+        })
+    
+
+
+        $("#DaysOffNumber").keydown(function (e) {
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                (e.keyCode == 67 && e.ctrlKey === true) ||
+                (e.keyCode == 88 && e.ctrlKey === true) ||
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                return;
+            }
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+  
+</script>

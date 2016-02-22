@@ -1,0 +1,36 @@
+﻿@model NCSS.Model.SubmitLeaveModel
+@{
+    ViewBag.Title = "NCSS - Submit Leave Application";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1 class="page-header">
+    Submit Leave Application
+</h1>
+
+<ol class="breadcrumb">
+    <li>
+        <i class=""></i>  <a href="Home/Portal">Home</a>
+    </li>
+    <li>
+        <i class=""></i> <a href="../Leave">Manage Leave Application</a>
+    </li>
+    <li class="">
+        <a href="../Leave/SubmitLeave">Submit Leave Application</a>
+    </li>
+</ol>
+<div id="submit-leave">
+    @{Html.RenderPartial("~/Views/Leave/SubmitForm.cshtml", Model);}
+</div>
+<script>
+    $(document).ready(function () {
+        $('#leaveMain').removeClass('collapsed');
+        $("#leaveMain").attr("aria-expanded", "true");
+        $('#leaveApp').addClass('in');
+        $("#leaveApp").attr("aria-expanded", "true");
+        $("#leaveApp").css("height", "71px");
+        $("#menu-top").find("li").removeClass("active");
+        $("#leaveApp").find("li:first-child").addClass("active");
+    });
+</script>
+

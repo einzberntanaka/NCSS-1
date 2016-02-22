@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "NCSS - Leave Application List";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1 class="page-header">
+    Leave Application List
+</h1>
+
+<ol class="breadcrumb">
+    <li>
+        <i class=""></i>  <a href="~/Home/Portal">Home</a>
+    </li>
+    <li>
+        <i class=""></i>  <a href="~/Leave">Leave Application</a>
+    </li>
+    <li class="active">
+        <i class=""></i><a href="~/Leave/LeaveAppList"> Leave Application List</a>
+</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Leave Searching
+    </div>
+    <div class="panel-body">
+
+
+        <div class="form-group col-sm-6 col-md-6 col-sx-12">
+            <label>Submit By:</label>
+            <div class='input-group'>
+                <input type="text" class="form-control" data-bind="value: Options.Name"/>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+            </div>
+        </div>
+   
+            <div class="form-group col-sm-6 col-md-6 col-sx-12">
+                <label>Leave Type:</label>
+                <select data-bind="options:availableSearchType,optionsText: 'Leavetype', optionsValue: 'Id',value: $root.Options.Leavetype" class="form-control"></select>
+            </div>
+            <div class="form-group col-sm-6 col-md-6 col-sx-12">
+                <label>Status:</label>
+                <select data-bind="options:availableSearchStatus,optionsText: 'Statusname', optionsValue: 'Id',value: $root.Options.Status" class="form-control"></select>
+            </div>
+        <div class="col-sm-6 col-md-6 col-sx-12">
+            <button type="button" id="SearchButton" class="btn btn-primary btn-md pull-right" data-bind="click: function () { StartSearching() }"><i class="fa fa-search-plus "></i> Search</button>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Leave List
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Submit By</th>
+                        <th>Leave Type</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Numbers of Days(s) Off</th>
+                        <th>Status</th>
+                        <th>Reason To Reject</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: LeaveList">
+                    <tr>
+                        <td data-bind="text: Submitby"></td>
+                        <td data-bind="text: Leavetype"></td>
+                        <td data-bind="text: Datefrom"></td>
+                        <td data-bind="text: Dateto"></td>
+                        <td data-bind="text: Daysoff"></td>
+                        <td data-bind="text: Status"></td>
+                        <td data-bind="text: Reason"></td>
+                        <td><a href="" data-bind="attr: { href: '../Leave/Detail/'+Id() }">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="paginationHolder"></div>
+    </div>
+</div>
+<script src="~/Scripts/App/LeaveApp.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#leaveMain').removeClass('collapsed');
+        $("#leaveMain").attr("aria-expanded", "true");
+        $('#leaveApp').addClass('in');
+        $("#leaveApp").attr("aria-expanded", "true");
+        $("#leaveApp").css("height", "71px");
+        $("#menu-top").find("li").removeClass("active");
+        $("#leaveApp").find("li:last-child").addClass("active");
+    });
+</script>

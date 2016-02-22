@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NCSSModelStoreContainer" CdmEntityContainer="NCSSEntities">
+    <EntitySetMapping Name="ARTICLEs">
+      <EntityTypeMapping TypeName="NCSSModel.ARTICLE">
+        <MappingFragment StoreEntitySet="ARTICLE">
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+          <ScalarProperty Name="ArticleTitle" ColumnName="ArticleTitle" />
+          <ScalarProperty Name="ArticleDate" ColumnName="ArticleDate" />
+          <ScalarProperty Name="ArticleDetail" ColumnName="ArticleDetail" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EVENTs">
+      <EntityTypeMapping TypeName="NCSSModel.EVENT">
+        <MappingFragment StoreEntitySet="EVENT">
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+          <ScalarProperty Name="EventStartDate" ColumnName="EventStartDate" />
+          <ScalarProperty Name="EventEndDate" ColumnName="EventEndDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LEAVEs">
+      <EntityTypeMapping TypeName="NCSSModel.LEAVE">
+        <MappingFragment StoreEntitySet="LEAVE">
+          <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
+          <ScalarProperty Name="LeaveTypeId" ColumnName="LeaveTypeId" />
+          <ScalarProperty Name="LeaveStatusId" ColumnName="LeaveStatusId" />
+          <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+          <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+          <ScalarProperty Name="DaysOff" ColumnName="DaysOff" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="RejectReason" ColumnName="RejectReason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LEAVEBALANCEs">
+      <EntityTypeMapping TypeName="NCSSModel.LEAVEBALANCE">
+        <MappingFragment StoreEntitySet="LEAVEBALANCE">
+          <ScalarProperty Name="LeaveBalanceId" ColumnName="LeaveBalanceId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LeaveTypeId" ColumnName="LeaveTypeId" />
+          <ScalarProperty Name="RemainingDays" ColumnName="RemainingDays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LEAVEMODIFies">
+      <EntityTypeMapping TypeName="NCSSModel.LEAVEMODIFY">
+        <MappingFragment StoreEntitySet="LEAVEMODIFY">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LEAVESTATUS">
+      <EntityTypeMapping TypeName="NCSSModel.LEAVESTATU">
+        <MappingFragment StoreEntitySet="LEAVESTATUS">
+          <ScalarProperty Name="LeaveStatusId" ColumnName="LeaveStatusId" />
+          <ScalarProperty Name="LeaveStatusName" ColumnName="LeaveStatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LEAVETYPEs">
+      <EntityTypeMapping TypeName="NCSSModel.LEAVETYPE">
+        <MappingFragment StoreEntitySet="LEAVETYPE">
+          <ScalarProperty Name="LeaveTypeId" ColumnName="LeaveTypeId" />
+          <ScalarProperty Name="LeaveName" ColumnName="LeaveName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NEWS">
+      <EntityTypeMapping TypeName="NCSSModel.NEWS">
+        <MappingFragment StoreEntitySet="NEWS">
+          <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+          <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+          <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+          <ScalarProperty Name="NewsDetail" ColumnName="NewsDetail" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYSLIPs">
+      <EntityTypeMapping TypeName="NCSSModel.PAYSLIP">
+        <MappingFragment StoreEntitySet="PAYSLIP">
+          <ScalarProperty Name="PayslipId" ColumnName="PayslipId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PayslipTime" ColumnName="PayslipTime" />
+          <ScalarProperty Name="ContractSalary" ColumnName="ContractSalary" />
+          <ScalarProperty Name="TechIncentive" ColumnName="TechIncentive" />
+          <ScalarProperty Name="ClientBonus" ColumnName="ClientBonus" />
+          <ScalarProperty Name="CompanyBonus" ColumnName="CompanyBonus" />
+          <ScalarProperty Name="OvertimePayment" ColumnName="OvertimePayment" />
+          <ScalarProperty Name="SalaryDeduction" ColumnName="SalaryDeduction" />
+          <ScalarProperty Name="HealthInsurance" ColumnName="HealthInsurance" />
+          <ScalarProperty Name="SocialInsuance" ColumnName="SocialInsuance" />
+          <ScalarProperty Name="TaxPayable" ColumnName="TaxPayable" />
+          <ScalarProperty Name="TakeHomeIncome" ColumnName="TakeHomeIncome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLEs">
+      <EntityTypeMapping TypeName="NCSSModel.ROLE">
+        <MappingFragment StoreEntitySet="ROLE">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERs">
+      <EntityTypeMapping TypeName="NCSSModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="PersonalTaxCode" ColumnName="PersonalTaxCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

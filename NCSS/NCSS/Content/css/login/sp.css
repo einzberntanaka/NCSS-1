@@ -1,0 +1,376 @@
+/**
+*
+* SingPass theme
+**/
+
+/* implement loading page */
+div.dialog-mask-loading
+{
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    /* background-color: #606060; */
+    background-color: #fff;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    -moz-opacity: .5;
+    opacity: 0.8;
+    display: none;
+    /* uat 221 */
+    /* background-image: url("../../img/SingPass-Logo-Loading-v02.1.gif"); */
+   /*  background-repeat: no-repeat;
+    background-position: center; */
+}
+
+/*.main-header #search input[type="submit"] {
+	margin-top: 6px; }
+i.icon.print {
+	margin-top: -3px;}*/
+.homepage__more a:hover {
+    /* text-decoration: none; */ }
+form .form-notification {
+	display: block; }
+	
+/* fix for uat 256 */
+.hover-over-hand {
+	cursor: pointer;
+}
+/* fix for uat 254 */
+.slideshow-height-custom img {
+	min-height: 225px !important;
+}
+/* suggestion 2B-4 */
+.mobileNumberWidthCustomize {
+	width: 220px !important;
+}
+/* suggestion 2B-4 */
+.countrycodeWidthCustomize {
+	width: 30px !important;
+	margin-right: 5px !important;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 40px;
+}
+/* suggestion 2B-4 */
+.mobilenumber-label-customize {
+	display: inline-block;
+}
+/* suggestion 2B-4 */
+.preferred-mode-label-customize {
+	display: inline-block;
+	vertical-align: super;
+}
+.homepage_height_custom {
+	min-height: 250px !important;
+}
+/* suggestion sit-2 */
+i.icon.question.login {
+    width: 16px;
+    height: 16px;
+    background-image: url('../../images/questionTransparency2.png');
+}
+
+/* pcs changes START*/
+/* @media screen and (min-width: 767px) { */
+	div.hr {
+		display: block; 
+	    border-top: 2px solid #fff;
+	    margin-top: 20px;
+	    margin-bottom: 0px; 
+	}
+	.label-reg-now-color {
+		color: #FF0000;
+	}
+	.island-custom {
+		width: 220px !important;
+		/* padding-top: 25px !important;
+		padding-bottom: 25px !important;	 */
+		padding-top: 5px !important;
+		padding-bottom: 0 !important;
+		min-height: 80px !important;
+		margin-top: 0.5% !important;
+	}
+	.tilesAlign {
+		position: relative;
+		display: inline-block;
+		width: 185px;	
+		/* text-align: left; */	
+	}
+	.tilesTextAlign{
+		top: 50%;
+		position: absolute;
+		transform: translate(0, -50%);
+		margin-left: 60px;
+	}
+	.display-inline-block {
+		display: inline-block;
+		width: 100%;
+	}
+	.changespid-notice-customize {
+		border: 1px solid #d0ceca;
+		height: 120px;
+	}
+	.changespid-notice-image {
+		width: 100px;
+	}
+	.changespid-notice-content {
+		width: 80%;
+	}
+	div.disable-background-color-hover:hover{
+		background-color: #FFFFFF !important;
+		color: #000000 !important;
+	}
+	div.white-background-color {
+		background-color: #FFFFFF !important;
+	}
+	.email-radiobutton-customize{
+		margin-left: 20px;}
+	.removeButtonCustomize {
+		margin-left: 10px;}
+	.do-not-have-sp-account-label {
+		display: inline-block;
+		margin-top: 10px;}
+	.quick-links-fontsize-customize {
+		font-size: 12px;}
+	.mobile-textfield-width-customize {
+		width: 206px;}
+/* } */
+
+/* pcs changes END*/
+	
+/* E-Service Auth
+================================================== */
+	.pure-u-1.pure-u-md-1-2.homepage__login.eservice{
+	  background: url("../../img/login-bg.png") no-repeat; 
+	  min-height: 250px;
+	  max-height: 270px;
+	  }
+  
+  	.login__more {
+ 		 margin: -20px 0 20px 0; }
+ 		 
+  	.login__more h2 {
+	    font-size: 24px;
+	    margin: 0 0 10px 0; }
+
+  	.login__more .island {  		
+  		min-height: 270px;
+    	padding: 23px 10px 0px 20px; }
+    
+	.login__more .login__security{ 
+		background: #f5f2ed; }
+		
+    .login__more .login__security ol {
+	      font-size: 12px;
+	      padding: 0;
+	      margin: 0 10px 10px 20px; }
+	      
+    .login__more .login__security ol li {
+	      line-height: 17px;
+	      margin-bottom: 12px; }
+	      
+    .login__more .login__security ol li span {
+       	color: #BB1721; }
+        
+    .login__more .login__security ol li:last-child {
+        margin-bottom: 0; }
+        
+    .login__more .login__security .view-all {
+	      float: right;
+	      color: #BB1721; }
+      
+/* 
+================================================== */
+textarea {
+	resize: none; }
+	
+.button-href a{
+	text-decoration: none;
+ 	color: #FF0000;
+ 	font-weight: normal; }
+
+.highlight{
+ 	font-weight: bold; }
+ 	
+input, textarea { 
+	color: #000000; }
+	
+.placeholder { 
+	color: #aaaaaa;
+	font-style: italic; }
+
+/* Additional CSS for Login Label
+  
+ To let the SingPass ID and Password layer appear side by side 
+ .login--component--container {
+	display: inline-block;
+}
+ 
+ To remove the padding bottom of the Login container 
+.homepage__login .sp-form fieldset.login--container {
+	padding-bottom: 0px;
+}*/
+
+/* Error, Unknown, Maintenance, Upgrade pages */
+	.error-page{
+		width: 850px;
+		max-width: 100%;}	
+	.error-page .with-icon span {
+	    display: table-cell;
+	    vertical-align: middle; }
+  	.error-page .with-icon img {
+	    vertical-align: middle;
+	    margin: 0 10px 0 15px; }
+  	.error-page .with-icon.address > span {
+  	  padding-left: 0px; }
+  	.error-page .with-icon a, .error-page .with-icon a:visited {
+    	color: #ee0000; }
+    .error-page .with-icon a img, .error-page .with-icon a:visited img {
+     	margin: 0 5px 0 0;
+      	vertical-align: text-top; }
+      	
+    .hyper-under-hover{
+    	cursor: pointer;
+    	text-decoration: underline;
+    }
+    .error-page-align-text-to-icon {
+	padding-top: 33px;}
+/* Error, Unknown, Maintenance, Upgrade pages */
+
+/*  #Mobile
+================================================== */
+    @media only screen and (max-width: 767px) {
+	.login__more .login__security ol {
+ 		margin-top: 20px; }
+ 	  
+ 	.login__more h2 {
+	    text-align: center;
+	    margin-top: 20px; }
+	    	    
+	.pure-u-1.pure-u-md-1-2.homepage__login.eservice{
+	 	background: url("../../img/login-bg.png") no-repeat; 
+	 	min-height: 250px;
+	 	max-height: 350px;
+	  	background-size: cover;
+	  }
+	  
+	 .island-padding-left-customize-for-mobile{
+	 	padding: 0 0 0 0 !important;
+	 } /* for mobile hyperlink center alignment*/
+	 
+	  /* suggestion 2B-4 */
+	.countrycodeWidthCustomize {
+		width: 30px !important;
+		margin-right: 10px !important;
+		display: inline-block;
+		float: left;
+		margin-left: 0px;
+	}
+	 /* suggestion 2B-4 */
+	.mobile-textfield-width-customize {
+		width: 67%;
+	}
+	/* suggestion 2B-4 */
+	.mobilenumber-label-customize {
+		display: inherit;
+	}
+	.pure-control-group-customize-mobile {
+	height: 50px; }
+	  
+	 /* pcs changes START*/
+	div.hr {
+		display: block; 
+	    border-top: 2px solid #fff;
+	    margin-top: 50px;
+	    margin-bottom: 15px; 
+	}
+	.label-reg-now-color {
+		color: #FF0000;
+	}
+	div.disable-background-color-hover:hover{
+		background-color: #FFFFFF !important;
+		color: #000000 !important;
+	}
+	div.white-background-color {
+		background-color: #FFFFFF !important;
+	}
+	.email-radiobutton-customize{
+		margin-left: 0px;}
+	.quick-links-margin-customize-mobile {
+		margin-left: auto;
+		margin-right: auto;
+		width:17em; 
+		/*center alignment for links in mobile*/
+		}
+
+	/* pcs changes END*/
+	
+		
+	/* Error, Unknown, Maintenance, Upgrade pages */
+	.error-page .with-icon.address span:first-child {
+   		border: 0;
+    	display: block;
+    	width: 100%;
+    	text-align: center;
+    	padding: 10px 20px 20px 0; }
+	/* Error, Unknown, Maintenance, Upgrade pages */
+	
+}
+	
+  .sp-form .t-form-errors {
+	  color: #000000;
+	  padding-right: 3px;
+	  font-size: inherit;
+	  vertical-align: top; }
+  
+  .sp-form .t-form-errors .icon-exclamation{
+	  display: inline-block;
+	  width: 16px;
+	  height: 16px;
+	  margin-right: 10px;
+	  background: url("../../img/exclamation.png"); }
+  
+li {
+	display: block;
+	line-height: 20px;
+}
+.content-navigation.large a li {
+	color: #FFFFFF;
+}
+
+.not-active-show-mob{
+	display: inline-block !important;
+	text-decoration: none;
+	background-color: #d0ceca !important;
+	color: #FFF;
+	}
+	
+	.note-box {
+    border: 1px solid #e7e7e7; }
+    .note-box span {
+      padding: 5px; }
+    .note-box span:first-child {
+      background-color: #f5f5f5;
+      display: inline-block; }
+      
+      /* suggestion 2B-17 */
+.note-box-image-container {
+	float: left;}
+/* suggestion 2B-17 */
+/* suggestion 2B-17 */
+.note-box-content-container{
+	width: 90%;
+	display: inline-block;
+	padding: 8px 8px; }
+	/* suggestion 2B-17 */
+	.note-box-content-container-content1, .note-box-content-container-content2 {
+		width: 100%;
+		display: inline-block;
+		text-align: justify; }
+		
+		.floatLeft {
+	float: left;
+}

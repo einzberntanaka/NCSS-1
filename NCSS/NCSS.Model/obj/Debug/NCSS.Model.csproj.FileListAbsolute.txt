@@ -1,0 +1,10 @@
+D:\NCSS\NCSS-SWP\NCSS\NCSS.Model\bin\Debug\NCSS.Model.dll
+D:\NCSS\NCSS-SWP\NCSS\NCSS.Model\bin\Debug\NCSS.Model.pdb
+D:\NCSS\NCSS-SWP\NCSS\NCSS.Model\obj\Debug\NCSS.Model.csprojResolveAssemblyReference.cache
+D:\NCSS\NCSS-SWP\NCSS\NCSS.Model\obj\Debug\NCSS.Model.dll
+D:\NCSS\NCSS-SWP\NCSS\NCSS.Model\obj\Debug\NCSS.Model.pdb
+E:\NCSS\NCSS-SWP\NCSS\NCSS.Model\bin\Debug\NCSS.Model.dll
+E:\NCSS\NCSS-SWP\NCSS\NCSS.Model\bin\Debug\NCSS.Model.pdb
+E:\NCSS\NCSS-SWP\NCSS\NCSS.Model\obj\Debug\NCSS.Model.csprojResolveAssemblyReference.cache
+E:\NCSS\NCSS-SWP\NCSS\NCSS.Model\obj\Debug\NCSS.Model.dll
+E:\NCSS\NCSS-SWP\NCSS\NCSS.Model\obj\Debug\NCSS.Model.pdb

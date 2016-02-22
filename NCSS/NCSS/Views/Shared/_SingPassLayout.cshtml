@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html class=" js  firefox windows">
+<head>
+    <script>
+        // Remove "no-js" class from document element, if it exists,
+        // if the no-js class is still visible, it means javascript is not supported on this browser (security settings)
+        var docElement = document.documentElement;
+        docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, ' js ');
+    </script>
+    <!-- <meta charset="utf-8"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="SingPass is an online account management for access to Singapore Government e-services.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <title>@ViewBag.Title</title>
+
+    <link rel="icon" type="img/ico" href="https://www.singpass.gov.sg/spauth/resources/assets/img/favicon.ico">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+
+    <link href="~/Content/css/login/pure-min.css" rel="stylesheet" />
+    <link href="~/Content/css/login/style_singpass.css" rel="stylesheet" />
+    <link href="~/Content/css/login/sp.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../css/2fa.htm" media="all">
+
+    <!-- end stylesheets -->
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="/spauth/resources/assets/css/pure-0.5.0/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if IE 8]>
+        <link rel="stylesheet" href="/spauth/resources/assets/css/ie8.css">
+    <![endif]-->
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/spauth/resources/assets/css/ie7.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link href="~/Content/css/login/grids-responsive-min.css" rel="stylesheet" />
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+        <script src="/spauth/resources/assets/plugins/html5.js"></script>
+    <![endif]-->
+    <!-- required to be in the head -->
+    <!-- conditionizr core -->
+    <script src="~/Scripts/Libs/singpass/conditionizr.js"></script>
+    <!-- conditionizr detects -->
+    <script src="~/Scripts/Libs/singpass/detect-all.js"></script>
+
+</head>
+<body>
+    <div id="browser" style="padding: 30px 0px 0px 30px;display:none">
+        <div class="with-icon address clearfix">
+            <span><span class="helper"></span><img src="~/Content/images/server.png" />></span>
+            <span class="error-page-align-text-to-icon">
+                <font color="#ff0000;" size="6"><strong>The current version of your browser is not supported.</strong></font><br><br>
+                The browser you are using does not meet the minimum security requirements to use the enhanced SingPass.<br>
+                You’ll need to update your browser to the latest version or
+                download one of the following browsers from the internet for free:<br>
+                (a) Internet Explorer version 7 to 11<br>
+                (b) Firefox version 31 or 33<br>
+                (c) Chrome version 37 or 38<br>
+                (d) Safari version 6.1 or 7<br>
+                For Mac users: Safari is included with your OS X. To update your
+                version of Safari, please install the most recent version from the <a class="hyper-under-hover" href="https://support.apple.com/HT202162">Mac App Store</a>. <br><br>
+                For further assistance, please contact:<br>
+                <b>SingPass Helpdesk</b><br>
+                Tel: +65 6643 0555 <br>
+                Email: <a class="hyper-under-hover" href="mailto:support@singpass.gov.sg">support@singpass.gov.sg</a><br><br>
+                <u>Operating hours</u>:<br>
+                <table>
+                    <tbody>
+                        <tr><td>Mondays to Fridays </td><td>8.00 am to 8.00 pm </td></tr>
+                        <tr><td>Saturdays</td><td>8.00 am to 2.00 pm.</td></tr>
+                        <tr><td>Sundays and Public Holidays</td><td> Closed</td></tr>
+                    </tbody>
+                </table>
+                <br><br>
+            </span>
+        </div>
+    </div>
+    <div id="body-wrapper-id" class="body-wrapper">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="text/javascript">
+            if (self === top) {
+                var antiClickjack = document.getElementById("antiClickjack");
+                antiClickjack.parentNode.removeChild(antiClickjack);
+            } else {
+                top.location = self.location;
+            }
+            function dologout() {
+                document.announcementform.action = "/spauth/login/logout";
+                document.announcementform.submit();
+            }
+        </script>
+
+        <div id="mobile-search-form">
+            <div class="page-container">
+                <form id="mobileSearch">
+                    <div>
+                        <input class="search" id="mobileSearchBox" placeholder="Search..." required="" type="text">
+                        <input class="btn" id="mobileSearchBtn" value="Go" type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="page-header container">
+                <div class="page-header--logos pure-g">
+                    <div class="pure-u-1 pure-u-md-1-2 alignleft">
+                        <!-- <a id="responsive-menu" class="toggle-nav show-mobile" href=""></a> -->
+                        <!-- fix for uat 260 -->
+                        <a id="responsive-menu" class="toggle-nav show-mobile hover-over-hand"></a>
+                        <h1 class="title">
+                            <a href="https://www.singpass.gov.sg/spauth/login/loginpage?c=679656567554787">SingPass</a>
+                        </h1>
+                        <div id="mobile-search" class="show-mobile"><a href=""></a></div>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2 alignright textright hide-mobile">
+                        <a href="http://www.gov.sg/" target="_blank">
+                            <img id="logo-gov" src="~/Content/images/singapore-government-logo.png" /></a>
+                        <form id="search">
+                            <div>
+                                <input class="search" id="searchBox" placeholder="Search" required="" type="text">
+                                <input value="" id="searchBtn" type="submit">
+                            </div>
+                        </form>
+                        <div class="header--links">
+                            <ul>
+                                <li class="isicon"><a id="font-small" href=""><i class="icon font-size small"></i></a></li>
+                                <li class="isicon"><a id="font-normal" href=""><i class="icon font-size normal"></i></a></li>
+                                <li class="isicon"><a id="font-big" href=""><i class="icon font-size big"></i></a></li>
+
+                                <li class="isicon"><a href=""><i class="icon print"></i></a></li>
+                                <li class="bordered"><a href="https://www.singpass.gov.sg/singpass/common/contact">Contact Us</a></li>
+                                <li class="bordered"><a href="https://www.singpass.gov.sg/singpass/feedback/feedbackform">Feedback</a></li>
+                                <li><a href="https://www.singpass.gov.sg/singpass/common/site">Sitemap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fullwidth header-branding"></div>
+            <div class="container">
+                <div class="page-header--menu hide-mobile">
+                    <ul class="page-header--right-menu">
+                        <!-- removed temporary -->
+
+                        <li><a href="http://www.ifaq.gov.sg/singpass/">FAQ</a></li>
+                        <li class="bullet"><a href="https://www.singpass.gov.sg/singpass/common/about">About Us</a></li>
+                        <li class="bullet"><a href="https://www.singpass.gov.sg/singpass/support/supportmain">Video Guides</a></li>
+                        <li class="bullet"><a href="https://www.singpass.gov.sg/singpass/common/counter">Counter Locations</a></li>
+                    </ul>
+                    <div class="nav">
+                        <ul class="sp-header__bottom">
+                            <li class="active" id="homeMenu">
+                                <a href="https://www.singpass.gov.sg/spauth/login/loginpage?c=679656567554787" class="home-menu">Home</a>
+
+                            </li>
+                            <li id="myAccountMenu">
+                                <a>My Account</a>
+                                <ul class="sub-menu">
+                                    <!-- suggestion 2B-50 -->
+                                    <li id="updateProfileMenu"><a href="https://www.singpass.gov.sg/singpass/updateaccount/profile">Update Account Details</a></li>
+                                    <li id="changePasswordMenu"><a href="https://www.singpass.gov.sg/singpass/reset/onlinePasswordChangepage">Change Password</a></li>
+                                    <!-- suggestion 2B-50 -->
+                                    <li id="accountHisMenu"><a href="https://www.singpass.gov.sg/singpass/accounthistory/enquiretransaction">View Transaction History</a></li>
+
+                                    <li id="setup2faMenu"><a href="https://www.singpass.gov.sg/singpass/setup2fa/devicestoregister2fa">Set Up 2-Step Verification</a></li>
+                                    <li id="manage2faMenu"><a href="https://www.singpass.gov.sg/singpass/manage2fa/updateprofile">Manage 2-Step Verification</a></li>
+                                </ul>
+                            </li>
+                            <li id="servicesMenu">
+                                <a>Services</a>
+                                <ul class="sub-menu">
+                                    <!-- pcs changes -->
+                                    <li id="registerMenu"><a href="https://www.singpass.gov.sg/singpass/register/registerinstructions">Register for SingPass</a></li>
+                                    <li id="checkAppStatusMenu"><a href="https://www.singpass.gov.sg/singpass/chkAppStatusCtrl/chkAppStatuspage">Check Application Status</a></li>
+                                    <li id="resetPasswordMenu"><a href="https://www.singpass.gov.sg/singpass/requestOnlineReset/requestOnlineResetTermsCheck">Reset Password</a></li>
+                                    <li id="retrieveSingPassMenu"><a href="https://www.singpass.gov.sg/singpass/retrieveaccount/termsandconditions">Retrieve SingPass ID</a></li>
+                                </ul>
+                            </li>
+
+                            <li id="myinfoMenu" onclick="location.href='/myinfo/intro';">
+                                <a href="https://www.singpass.gov.sg/myinfo/intro">MyInfo</a>
+                                <!--<ul class="sub-menu">
+                                     <li id="myInfoSubMenu"><a href="/myinfo/viewProfile/viewProfile?refererValue=myinfo">View MyInfo Profile</a></li>
+                                    <li id="myInfoSubMenu"><a href="/myinfo/updateProfile/updateProfile?refererValue=myinfo">Update MyInfo Profile</a></li>
+                                    <li id="myInfoSubMenu"><a href="/myinfo/transactionHistory/viewTransaction?refererValue=myinfo">MyInfo Transaction History</a></li>
+                                    <li id="myInfoSubMenu"><a href="/myinfo/manageNotification/manageNotification?refererValue=myinfo">Manage Notifications</a></li>
+                                    <li id="myInfoSubMenu"><a href="/myinfo/delProfile/deleteProfile?refererValue=myinfo">Delete MyInfo Profile</a></li>
+                                </ul> -->
+                            </li>
+
+
+                        </ul>
+                    </div><!--/nav-->
+                    <div class="notification user-js-alert alert">
+                        <div class="container">
+                            <h4>Security Issues</h4>
+                            <div class="user-warning">This Website is using Javascript for best user experience, please enable Javascript support in your Security settings.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form id="announcementform" name="announcementform" action="/spauth/login/loginpage?URL=%2F&amp;TAM_OP=login" method="post">
+
+
+            <div>
+                <input name="CSRFTokenUnauthenticated" value="null" type="hidden">
+            </div>
+        </form>
+        <div class="page-container">
+            @RenderBody()
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="main-footer push">
+        <div class="footer--update">
+            <div class="container">
+                <div class="textright">
+                    Last updated on 05 July 2015
+                </div>
+            </div>
+        </div>
+        <div class="footer--links">
+            <div class="container">
+                <div class="pure-g ">
+                    <div class="pure-u-1 pure-u-md-1-2 bottom-links alignleft">
+                        <!-- fix for sit 1516 -->
+                        <a href="https://www.singpass.gov.sg/singpass/common/privacy" target="_blank">Privacy Statement</a>
+                        <a href="https://www.singpass.gov.sg/singpass/common/terms" target="_blank">Terms of Use</a>
+                        <a href="https://www.singpass.gov.sg/singpass/ratewebsite/ratewebsiteform" target="_blank">Rate This Website</a>
+                        <!-- <a href="">Rate this site</a> -->
+                    </div>
+                    <div class="pure-u-1 bottom-links show-mobile xs-m-t-10">
+
+                        <a href="http://www.ifaq.gov.sg/singpass/" target="_blank">FAQ</a>
+                        <a href="https://www.singpass.gov.sg/singpass/common/about" target="_blank">About Us</a>
+                        <a href="https://www.singpass.gov.sg/singpass/support/supportmain">Video Guides</a>
+                        <a href="https://www.singpass.gov.sg/spauth/common/counter">Counter Locations</a>
+                        <a href="https://www.singpass.gov.sg/singpass/common/contact" target="_blank">Contact Us</a>
+                        <a href="https://www.singpass.gov.sg/singpass/feedback/feedbackform" target="_blank">Feedback</a>
+                        <a href="https://www.singpass.gov.sg/singpass/common/site" target="_blank">Sitemap</a>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-2 copyright alignright textright">
+                        <div class="textright xs-textcenter">©&nbsp;2015 Government of Singapore</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sidr">
+
+    </div>
+    <!--  scripts -->
+
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/jquery-1.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/jquery_002.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/plugins.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/fontresizer.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/jquery_004.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/jquery.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/app.js"></script><div class="sidr left" id="sidr-main">
+        <div class="sidr-inner">
+            <ul class="sidr-class-sp-header__bottom">
+                <li class="sidr-class-active" id="sidr-id-homeMenu">
+                    <a href="https://www.singpass.gov.sg/spauth/login/loginpage?c=679656567554787" class="sidr-class-home-menu">Home</a>
+
+                </li>
+                <li id="sidr-id-myAccountMenu">
+                    <a>My Account</a>
+                    <ul class="sidr-class-sub-menu">
+                        <!-- suggestion 2B-50 -->
+                        <li id="sidr-id-updateProfileMenu"><a href="https://www.singpass.gov.sg/singpass/updateaccount/profile">Update Account Details</a></li>
+                        <li id="sidr-id-changePasswordMenu"><a href="https://www.singpass.gov.sg/singpass/reset/onlinePasswordChangepage">Change Password</a></li>
+                        <!-- suggestion 2B-50 -->
+                        <li id="sidr-id-accountHisMenu"><a href="https://www.singpass.gov.sg/singpass/accounthistory/enquiretransaction">View Transaction History</a></li>
+
+                        <li id="sidr-id-setup2faMenu"><a href="https://www.singpass.gov.sg/singpass/setup2fa/devicestoregister2fa">Set Up 2-Step Verification</a></li>
+                        <li id="sidr-id-manage2faMenu"><a href="https://www.singpass.gov.sg/singpass/manage2fa/updateprofile">Manage 2-Step Verification</a></li>
+                    </ul>
+                </li>
+                <li id="sidr-id-servicesMenu">
+                    <a>Services</a>
+                    <ul class="sidr-class-sub-menu">
+                        <!-- pcs changes -->
+                        <li id="sidr-id-registerMenu"><a href="https://www.singpass.gov.sg/singpass/register/registerinstructions">Register for SingPass</a></li>
+                        <li id="sidr-id-checkAppStatusMenu"><a href="https://www.singpass.gov.sg/singpass/chkAppStatusCtrl/chkAppStatuspage">Check Application Status</a></li>
+                        <li id="sidr-id-resetPasswordMenu"><a href="https://www.singpass.gov.sg/singpass/requestOnlineReset/requestOnlineResetTermsCheck">Reset Password</a></li>
+                        <li id="sidr-id-retrieveSingPassMenu"><a href="https://www.singpass.gov.sg/singpass/retrieveaccount/termsandconditions">Retrieve SingPass ID</a></li>
+                    </ul>
+                </li>
+
+                <li id="sidr-id-myinfoMenu" onclick="location.href='/myinfo/intro';">
+                    <a href="https://www.singpass.gov.sg/myinfo/intro">MyInfo</a>
+                    <!--<ul class="sub-menu">
+                         <li id="myInfoSubMenu"><a href="/myinfo/viewProfile/viewProfile?refererValue=myinfo">View MyInfo Profile</a></li>
+                        <li id="myInfoSubMenu"><a href="/myinfo/updateProfile/updateProfile?refererValue=myinfo">Update MyInfo Profile</a></li>
+                        <li id="myInfoSubMenu"><a href="/myinfo/transactionHistory/viewTransaction?refererValue=myinfo">MyInfo Transaction History</a></li>
+                        <li id="myInfoSubMenu"><a href="/myinfo/manageNotification/manageNotification?refererValue=myinfo">Manage Notifications</a></li>
+                        <li id="myInfoSubMenu"><a href="/myinfo/delProfile/deleteProfile?refererValue=myinfo">Delete MyInfo Profile</a></li>
+                    </ul> -->
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/header.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/Libs/singpass/jquery_003.js"></script>
+</body>
+</html>

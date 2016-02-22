@@ -1,0 +1,323 @@
+﻿@{
+    ViewBag.Title = "SingPass Login";
+    Layout = "~/Views/Shared/_SingPassLayout.cshtml";
+}
+
+
+
+<div class="page-content">
+    <div class="content">
+        <!-- implement loading page -->
+        <div style="display: none;" id="loadingDiv" class="dialog-mask-loading"></div>
+        <script src="~/Scripts/Libs/singpass/localsecurity.js"></script>
+
+        <script>
+            var Exponent = "10001";
+            var Modulus = "E4C24D5E30ACF7DA95A3EA3AC6B840C2C93517A70B5D8A626D8FA90ABE1D86519F4223D61F7800FDC1DB1EDBC9811556A992DE8370BC102DE9239EF594808ABEBBB43CBC061E5A0C2E54195F648F32E33FBDFD3A7F0C6D51112A3C423278AC2ACA6C7D1C3652F3FED842BC7B726CDF3FC735C751A8F340822C13289A99780815E6EA5A2822B831EB03B1E40C42BD32471470E98F31944DD285DEA583397DFEDA83488C3E4480AAD25DB0664E8251C0849E1001C2429601DFA6F270542C3921477605A94EC2A8FAEB2B6EF0510EACA726954F3E61899857CECD94D3DEB827CE407D8406E1184C7CB4FEC53DED4CA1CC9AAE3C8274EFC562ABAA0B7DC70E6A590B";
+            function checkErrorMessage() {
+                if ("false" == 'true') {
+                    document.getElementById('loginFirstDiv').style.display = "none";
+                    document.getElementById('invalidLoginDiv').style.display = "block";
+                    document.getElementById('bothMandatoryDiv').style.display = "none";
+                    document.getElementById('userIdMandatoryDiv').style.display = "none";
+                    document.getElementById('passwordMandatoryDiv').style.display = "none";
+                    document.getElementById('loginh1').style.marginTop = "10px";
+                    document.getElementById('loginh1').style.marginRight = "0px";
+                    document.getElementById('loginh1').style.marginBottom = "0px";
+                    document.getElementById('loginh1').style.marginLeft = "5px";
+                    return false;
+                } else if ("false" == 'true') {
+                    document.getElementById('loginFirstDiv').style.display = "block";
+                    document.getElementById('invalidLoginDiv').style.display = "none";
+                    document.getElementById('bothMandatoryDiv').style.display = "none";
+                    document.getElementById('userIdMandatoryDiv').style.display = "none";
+                    document.getElementById('passwordMandatoryDiv').style.display = "none";
+                    document.getElementById('loginh1').style.marginTop = "10px";
+                    document.getElementById('loginh1').style.marginRight = "0px";
+                    document.getElementById('loginh1').style.marginBottom = "0px";
+                    document.getElementById('loginh1').style.marginLeft = "5px";
+                    return false;
+                }
+
+            }
+
+            function doSubmit() {
+                var UserIdValue = document.LoginForm.loginID.value;
+                var PinValue = document.LoginForm.password.value;
+
+                var userIdMandatory = true;
+                var passwordMandatory = true;
+
+                if (typeof UserIdValue != "undefined") {
+                    if (UserIdValue == "SingPass ID" || $.trim(UserIdValue).length == 0)
+                        userIdMandatory = false;
+                } else {
+                    userIdMandatory = false;
+                }
+
+                if (typeof PinValue != "undefined") {
+                    if (PinValue == "Password" || PinValue.length == 0)
+                        passwordMandatory = false;
+                } else {
+                    passwordMandatory = false;
+                }
+
+                if (userIdMandatory == false && passwordMandatory == false) {
+                    document.getElementById('loginFirstDiv').style.display = "none";
+                    document.getElementById('bothMandatoryDiv').style.display = "block";
+                    document.getElementById('userIdMandatoryDiv').style.display = "none";
+                    document.getElementById('passwordMandatoryDiv').style.display = "none";
+                    document.getElementById('invalidLoginDiv').style.display = "none";
+                    document.getElementById('loginh1').style.marginTop = "10px";
+                    document.getElementById('loginh1').style.marginRight = "0px";
+                    document.getElementById('loginh1').style.marginBottom = "0px";
+                    document.getElementById('loginh1').style.marginLeft = "5px";
+                    return false;
+                }
+
+                if (userIdMandatory == false) {
+                    document.getElementById('loginFirstDiv').style.display = "none";
+                    document.getElementById('userIdMandatoryDiv').style.display = "block";
+                    document.getElementById('bothMandatoryDiv').style.display = "none";
+                    document.getElementById('passwordMandatoryDiv').style.display = "none";
+                    document.getElementById('invalidLoginDiv').style.display = "none";
+                    document.getElementById('loginh1').style.marginTop = "10px";
+                    document.getElementById('loginh1').style.marginRight = "0px";
+                    document.getElementById('loginh1').style.marginBottom = "0px";
+                    document.getElementById('loginh1').style.marginLeft = "5px";
+                    return false;
+                }
+
+                if (passwordMandatory == false) {
+                    document.getElementById('loginFirstDiv').style.display = "none";
+                    document.getElementById('userIdMandatoryDiv').style.display = "none";
+                    document.getElementById('bothMandatoryDiv').style.display = "none";
+                    document.getElementById('passwordMandatoryDiv').style.display = "block";
+                    document.getElementById('invalidLoginDiv').style.display = "none";
+                    document.getElementById('loginh1').style.marginTop = "10px";
+                    document.getElementById('loginh1').style.marginRight = "0px";
+                    document.getElementById('loginh1').style.marginBottom = "0px";
+                    document.getElementById('loginh1').style.marginLeft = "5px";
+                    return false;
+                }
+                var rsaBlock = encryptVerifyNoUserRSABlock256(Exponent, Modulus, PinValue, "6FF76C07BB2CB71BF0DDE5271C4E0879");
+                var rsaBlock1 = encryptMigratePwdNoVerifyNoUser256RSABlock512(Exponent, Modulus, PinValue, "ECA58737AA0409ECBCE21E39204A973C514AE626B4D4EE9C6417C44B0171C3ED", "B13067A1310F4D6AB381FBCAB1C8E25CB1E58EB68FC43C72A3CDF0F1C26FBDC657D80C1CD6743C313750A475D7BEF67ECE56500ED91DA629C7C7B2F191E06A62");
+                var rsaBlock2 = encryptVerifyStaticNoUserRSABlock512(Exponent, Modulus, PinValue, "B13067A1310F4D6AB381FBCAB1C8E25CB1E58EB68FC43C72A3CDF0F1C26FBDC657D80C1CD6743C313750A475D7BEF67ECE56500ED91DA629C7C7B2F191E06A62");
+                document.SubmitForm.EncryptedRSABlock.value = rsaBlock;
+                document.SubmitForm.EncryptedRSABlock1.value = rsaBlock1;
+                document.SubmitForm.EncryptedRSABlock2.value = rsaBlock2;
+                document.SubmitForm.uid.value = UserIdValue;
+
+                document.SubmitForm.submit();
+                $('button').attr('disabled', 'disabled');
+                return true;
+            }
+
+            window.onload = function () {
+                try {
+                    var rsaBlock = encryptVerifyNoUserRSABlock256(Exponent, Modulus, "test", "6FF76C07BB2CB71BF0DDE5271C4E0879");
+                    var rsaBlock1 = encryptMigratePwdNoVerifyNoUser256RSABlock512(Exponent, Modulus, "test", "ECA58737AA0409ECBCE21E39204A973C514AE626B4D4EE9C6417C44B0171C3ED", "B13067A1310F4D6AB381FBCAB1C8E25CB1E58EB68FC43C72A3CDF0F1C26FBDC657D80C1CD6743C313750A475D7BEF67ECE56500ED91DA629C7C7B2F191E06A62");
+                    var rsaBlock2 = encryptVerifyStaticNoUserRSABlock512(Exponent, Modulus, "test", "B13067A1310F4D6AB381FBCAB1C8E25CB1E58EB68FC43C72A3CDF0F1C26FBDC657D80C1CD6743C313750A475D7BEF67ECE56500ED91DA629C7C7B2F191E06A62");
+                } catch (err) {
+                    document.getElementById('body-wrapper-id').style.display = "none";
+                    document.getElementById('browser').style.display = "block";
+                }
+
+                checkErrorMessage();
+                $('button').removeAttr('disabled');
+
+            }
+
+        </script>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <!-- fix for uat254 -->
+                <div style="position: relative;" class="cycle-slideshow slideshow-height-custom" data-cycle-fx="scrollHorz" data-cycle-speed="500" data-cycle-swipe="true" data-cycle-swipe-fx="scrollHorz">
+                    <img class="cycle-slide cycle-sentinel" style="position: static; top: 0px; left: 0px; z-index: 99; opacity: 1; display: block; visibility: hidden;" src="~/Content/images/Slide04.jpg">
+                    <!-- commented out temporary -->
+                    <!-- <div class="cycle-pager"></div>
+                    <div class="cycle-prev"></div>
+                    <div class="cycle-next"></div> -->
+                    <img class="cycle-slide cycle-slide-active" style="position: absolute; top: 0px; left: 0px; z-index: 99; opacity: 1; display: block; visibility: visible;" src="~/Content/images/Slide04.jpg">
+                </div>
+            </div>
+            <!-- fix for uat 254 -->
+            <div class="pure-u-1 pure-u-md-1-2 homepage__login homepage_height_custom">
+
+                <form id="login" name="LoginForm" class="pure-form pure-form-stacked sp-form tovalidate" action="" method="post" autocomplete="off">
+
+
+                    <input id="pageBean.pageNumber" name="pageBean.pageNumber" value="page1" type="hidden">
+
+                    <h1 id="loginh1">Login</h1>
+                    <div class="form-notification alert" style="border-style:none;">
+                        <div id="bothMandatoryDiv" style="display:none">Please enter your SingPass ID and Password.</div>
+                        <div id="userIdMandatoryDiv" style="display:none">Please enter your SingPass ID.</div>
+                        <div id="passwordMandatoryDiv" style="display:none">Please enter your SingPass Password.</div>
+                        <div id="invalidLoginDiv" style="display:none">null</div>
+                        <div id="loginFirstDiv" style="display:none">Please log onto SingPass to proceed.</div>
+                        @if (ViewBag.messageError != null && ViewBag.messageError != "")
+                        {
+                            <div id="invalidLoginDiv" style="display: block;">@ViewBag.messageError</div>
+                        }
+                    </div>
+
+                    <fieldset>
+                        <div class="pure-g">
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <div class="pure-control-group">
+                                    <label for="login">
+                                        SingPass ID
+                                        <!-- suggestion sit-2 -->
+                                        <!-- fix for sit 1564 -->
+                                        <a title="" data-original-title="" class="pop hover-over-hand" data-content="Your SingPass ID is your NRIC/FIN or your personalised ID (e.g. S1234567G, charisoon70)"><i class="icon question login"></i></a>
+                                    </label>
+                                    <input data-rule-required="true" class="input-95" id="loginID" name="loginID" autocomplete="off" maxlength="20" type="text">
+                                </div>
+                            </div>
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <div class="pure-control-group">
+                                    <label for="password">
+                                        Password
+                                        <!-- suggestion sit-2 -->
+                                        <a title="" data-original-title="" class="pop hover-over-hand" data-content="8-24 characters, CASE-SENSITIVE"><i class="icon question login"></i></a>
+                                    </label>
+                                    <input data-rule-required="true" class="input-95" id="password" name="password" type="password">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="pure-controls float-none-ie7">
+                        <input type="submit" class="pure-button pure-button-primary btn" value="Login">
+                        <span class="forgot">
+                            Forgot <a href="https://www.singpass.gov.sg/singpass/retrieveaccount/termsandconditions">SingPass ID</a> or
+                            <a href="https://www.singpass.gov.sg/singpass/requestOnlineReset/requestOnlineResetTermsCheck">Password</a>?
+                        </span>
+                    </div>
+
+                    <!-- pcs changes -->
+                    <!-- <br>
+                    <div class="hr"></div> -->
+                    <div class="do-not-have-sp-account-label">
+                        <span style="font-size:12px;">Don't have a SingPass account?</span><span class="label-reg-now-color" style="font-size:12px;">
+                            &nbsp;<a class="main-link" href="https://www.singpass.gov.sg/singpass/register/registerinstructions"><b>Register Now</b></a>
+                        </span><br>
+                        <span style="font-size:12px;">Received an SMS about 2FA  auto-registration? </span><span class="label-reg-now-color" style="font-size:12px;">
+                            &nbsp;<a class="main-link" href="http://www.ifaq.gov.sg/SINGPASS/apps/fcd_faqmain.aspx#TOPIC_9374" target="_blank"><b>Find Out More</b></a>
+                        </span>
+                    </div>
+
+                    <input name="EncryptedRSABlock" value="" type="hidden">
+                    <input name="EncryptedRSABlock1" value="" type="hidden">
+                    <input name="EncryptedRSABlock2" value="" type="hidden">
+                    <input name="uid" value="" type="hidden">
+                    <!-- add in parameters required by eai -->
+
+                    <input name="URL" value="/" type="hidden">
+
+                    <input name="TAM_OP" value="login" type="hidden">
+
+                    <div>
+                        <input name="CSRFTokenUnauthenticated" value="null" type="hidden">
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div>
+        <div class="pure-g homepage__more">
+            <div class="pure-u-1 pure-u-md-1-2 homepage__security hide-mobile">
+                <!-- pcs changes -->
+                <div class="island advisory-board-custom">
+                    <h2>Security Advisory</h2>
+                    <div class="pure-g">
+                        <div class="pure-u-1 pure-u-md-1-5 u-center">
+                            <img src="~/Content/images/security.png">
+                        </div>
+                        <div class="pure-u-1 pure-u-md-4-5">
+                            <ol>
+                                <!-- suggestion 2B-17 -->
+                                <li><span>Protect your SingPass with strong passwords</span></li>
+                                <li><span>Change your SingPass password regularly</span></li>
+                                <li><span>Visit the <em><a href="https://www.csa.gov.sg/gosafeonline/" target="_blank" style="color: #bb1721;">GoSafe Online</a></em> website to learn more about how to protect yourself against cyber threats.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- psc suggestion -->
+
+                </div>
+            </div>
+
+
+            <div class="pure-u-1 pure-u-md-1-2 homepage__postlogin">
+                <div align="center">
+                    <div class="island island-padding-left-customize-for-mobile">
+                        <!-- pcs changes -->
+                        <!-- 15 april 2015 -->
+                        <h2>What can you do after Login?</h2>
+                        <!-- psc suggestion -->
+                        <div class="pure-g quick-links-fontsize-customize quick-links-margin-customize-mobile">
+                            <div class="pure-u-1 pure-u-md-1-3 postlogin__right island-custom disable-background-color-hover white-background-color">
+                                <div class="tilesAlign">
+                                    <img src="~/Content/images/update.png">
+                                    <!-- <div class="tilesTextAlign">Update My Profile</div> -->
+                                    <!-- suggestion 2B-50 -->
+                                    <br>Update Account Details
+                                </div>
+                            </div>
+                            <!-- pcs changes start -->
+                            <!-- 9 apr 2015 -->
+                            <div class="pure-u-1 pure-u-md-1-3 postlogin__right island-custom disable-background-color-hover white-background-color">
+                                <div class="tilesAlign">
+
+                                    <img src="~/Content/images/change.png" />
+                                    <!-- <div class="tilesTextAlign">Change My Password</div> -->
+                                    <br>Change My Password
+                                </div>
+                            </div>
+                            <!-- pcs changes start -->
+                            <!-- 9 apr 2015 -->
+                            <div class="pure-u-1 pure-u-md-1-3 postlogin__right island-custom disable-background-color-hover white-background-color">
+                                <div class="tilesAlign">
+                                    <img src="~/Content/images/check.png" />
+                                    <!-- <div class="tilesTextAlign">Review Account History</div> -->
+                                    <!-- suggestion 2B-50 -->
+                                    <br>View Transaction History
+                                </div>
+                            </div>
+                            <!-- pcs changes start -->
+                            <!-- 9 apr 2015 -->
+                            <div class="pure-u-1 pure-u-md-1-3 postlogin__right island-custom disable-background-color-hover white-background-color">
+                                <div class="tilesAlign">
+                                    <img src="~/Content/images/2-step-w47.png">
+                                    <!-- <div class="tilesTextAlign">Set up 2-Step Verification</div> -->
+                                    <!-- suggestion 2B-12 -->
+                                    <br>Set Up 2-Step Verification&nbsp;(2FA)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <form name="SubmitForm" action="" method="POST">
+            <input name="EncryptedRSABlock" value="" type="hidden">
+            <input name="EncryptedRSABlock1" value="" type="hidden">
+            <input name="EncryptedRSABlock2" value="" type="hidden">
+            <input name="uid" value="" type="hidden">
+
+            <input name="URL" value="/" type="hidden">
+
+            <input name="TAM_OP" value="login" type="hidden">
+
+        </form>
+    </div>
+</div>
+<a id="toTop" href="" class="show-mobile"><i class="icon arrow up"></i> Go Back to Top</a>
+<div class="push clearfix"></div>

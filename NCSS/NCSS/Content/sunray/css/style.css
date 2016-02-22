@@ -1,0 +1,97 @@
+body {
+	margin: 0px auto;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.menu_list {
+	width: 250px;
+}
+.menu_head_down {
+	margin:0;
+	width: 100%;
+	cursor: pointer;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #FFF;
+	border-bottom-color: #FFF;
+	height: auto;
+	background: #039 url(../images/mplus.png) top left no-repeat;
+	
+}
+.menu_head_down a {
+    padding: 0.5em 1.6em;
+    display:block;
+	cursor: pointer;
+	color: #FFF;
+	text-decoration: none;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	background: none;
+}
+.menu_head_down a:hover, .menu_head_down a:active  {
+	background: #039 url(../images/mminus_over.png) top left no-repeat;
+}
+.menu_head_down a:active a:hover, .menu_head_down a:active a:active  {
+	background: #039 url(../images/mplus.png) top left no-repeat;
+}
+.menu_head {
+	margin:0;
+	width: 100%;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #FFF;
+	border-bottom-color: #FFF;
+	height: auto;
+	background: #039 url(../images/mblank.png);
+}
+.menu_head a {
+    padding: 0.5em 1.6em;
+    display:block;
+	height: auto;
+	background: none;
+	cursor: pointer;
+	color: #FFF;
+	text-decoration: none;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+}
+.menu_head a:hover, .menu_head a:focus, .menu_head a:active{
+background: #039 url(../images/mblank_over.png) top left no-repeat;
+}
+
+
+.menu_body {
+	display:none;
+	background:#f8f8f8;
+	margin:0;
+	width: 100%;
+}
+.menu_body a {
+	display:block;
+	padding: 0.5em 2.5em;
+	cursor: pointer;
+	background-color: #33c;
+	color: #fff;
+	text-decoration: none;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	font-variant: normal;
+	text-transform: none;
+	border-bottom: solid 1px #6d6dd5;
+}
+.menu_body a:hover {
+	background-color:#6d6dd5;
+}

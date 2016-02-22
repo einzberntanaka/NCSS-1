@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "NCSS - Payslip";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<h1 class="page-header">
+    View Pageslip
+</h1>
+
+<ol class="breadcrumb">
+    <li>
+        <i class=""></i>  <a href="~/Home/Portal">Home</a>
+    </li>
+    <li class="active">
+        <i class=""></i> <a href="~/Payslip">View Pageslip</a>
+    </li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        PaySlip
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-2">PaySlip of Month:</label>
+                <div class="col-sm-6">
+                    <select class="form-control input-large">
+                        <option>Jan 2016</option>
+                        <option>Feb 2016</option>
+                    </select>
+
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-default pull-right">View</button>
+                </div>
+                </div>
+</form>
+
+    
+</div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Your General Information
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-3">Full Name:</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">Ping Chin</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3">Employee Id:</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">11502201</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Personal Tax Code:</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">SPS-145522</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Contract Salary(SGD):</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">4000</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Addition Salary(SGD):</label>
+                <div class="col-sm-9">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-sm-offset-2 col-xs-offset-1 col-xs-5">Certificate Incentive(SGD):</label>
+                <div class="col-sm-2 col-xs-6">
+                    <label class="control-label payslip-info">300</label>
+                </div>
+                <label class="control-label col-sm-3 col-xs-offset-1 col-xs-5">Company Bonus(SGD):</label>
+                <div class="col-sm-2 col-xs-6">
+                    <label class="control-label payslip-info">400</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-sm-offset-2 col-xs-offset-1 col-xs-5">Client Bonus(SGD):</label>
+                <div class="col-sm-2 col-xs-6">
+                    <label class="control-label payslip-info">200</label>
+                </div>
+                <label class="control-label col-sm-3 col-xs-offset-1 col-xs-5">Overtime Payment(SGD):</label>
+                <div class="col-sm-2 col-xs-6">
+                    <label class="control-label payslip-info">500</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Salaray Deduction(SGD):</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">560</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Health Insurance Deduction(SGD):</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">250</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Social Insurance Deduction(SGD):</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">125</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Tax Payable:</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">400</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Tax Home Income:</label>
+                <div class="col-sm-9">
+                    <label class="control-label payslip-info">200</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12" style="margin:0 auto;text-align:center;"><input type="submit" class="btn btn-info" value="Export to PDF" /></div>
+       
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#menu-top").find("li").removeClass("active");
+        $("#Payslip-menu").addClass("active");
+    });
+</script>

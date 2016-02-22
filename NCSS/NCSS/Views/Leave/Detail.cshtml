@@ -1,0 +1,88 @@
+﻿@model NCSS.Model.Views.LeaveView
+@{
+    ViewBag.Title = "NCSS - Leave Application Detail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1 class="page-header">
+    Submit Leave Application
+</h1>
+
+<ol class="breadcrumb">
+    <li>
+        <i class=""></i>  <a href="~/Home/Portal">Home</a>
+    </li>
+    <li>
+        <i class=""></i> <a href="~/Leave">Manage Leave Application</a>
+    </li>
+    <li class="active">
+        <a href="~/Leave/Detail/@Model.Id">Leave Application Detail</a>
+    </li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Submit Leave Form
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal col-sm-12 col-md-8 col-md-offset-2 col-xs-12">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">Submited By:</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.SubmitBy, null, new { @class = "form-control", @disabled = "disabled" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="pwd">Leave Type:</label>
+                <div class="col-sm-9" id="remain-days">
+                    @Html.TextBoxFor(model => model.LeaveType, null, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">From Date:</label>
+                <div class="col-sm-9">
+                    <div class='input-group'>
+                        @Html.TextBoxFor(model => model.DateFrom, null, new { @class = "form-control", @disabled = "disabled" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">To Date:</label>
+                <div class="col-sm-9">
+                    <div class='input-group'>
+                        @Html.TextBoxFor(model => model.DateTo, null, new { @class = "form-control", @disabled = "disabled" })
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">Number of Days Off:</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.DaysOff, null, new { @class = "form-control", @disabled = "disabled" })
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="email">Reason:</label>
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(model => model.Reason, new { @class = "form-control custom-control", @style = "resize: none", @disabled = "disabled" })
+                </div>
+            </div>
+            <div class="pull-right">
+                <input type="submit" class="btn btn-success" value="Approve" />
+                <input type="submit" class="btn btn-danger" value="Reject" />
+                <input type="submit" class="btn " value="Cancel" />
+            </div>
+        </form>
+    </div>
+</div>
+
