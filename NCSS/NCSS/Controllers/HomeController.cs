@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +9,7 @@ namespace NCSS.Controllers
     public class HomeController : Controller
     {
         //
-        // GET: /Home/
+        // GET: /Home//
         public ActionResult Index()
         {
             return View();
